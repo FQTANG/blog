@@ -1,0 +1,57 @@
+
+{% extends "base.html" %} {% load staticfiles %}
+
+{% block title %} 写文章 {% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <!-- アーティカルフォルム -->
+            <form method="post" action=".">
+                <!-- csrf_token　チェック -->
+                {% csrf_token %}
+                <!-- タイトル -->
+                <div class="form-group">
+                    <!-- タッグ -->
+                    <label for="title">文章标题</label>
+                    <!-- テキストボックス -->
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+                
+                <!-- コルム -->
+                <div class="form-group">
+                    <label for="column">栏目</label>
+                    <select class="form-control col-3" 
+                            id="column" 
+                            name="column"
+                    >
+                            <option value="none">请选择栏目..</option>
+                        {% for column in columns %}
+                            <option value="{{ column.id }}">{{ column }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+    <div class="form-group">
+        <label for="tags">标签</label>
+        <input type="text" 
+               class="form-control col-3" 
+               id="tags" 
+               name="tags"
+        >
+    </div>
+                <!-- 本文 -->
+                <div class="form-group">
+                    <label for="body">文章正文</label>
+                    <!--  テキストボックス-->
+                    <textarea type="text" class="form-control" id="body" name="body" rows="12"></textarea>
+                </div>
+                <!-- ボタル -->
+                <button type="submit" class="btn btn-primary">完成</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
