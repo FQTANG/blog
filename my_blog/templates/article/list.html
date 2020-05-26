@@ -6,7 +6,6 @@
 {% block title %}
     首页
 {% endblock title %}
-
 <!--  base.htmlで定義宣言したcontentを導入する -->
 {% block content %}
 
@@ -88,7 +87,7 @@
             </h4>
             <span>
     {% for tag in article.tags.all %}
-        <a href="{% url 'article:article_list' %}?tag={{ tag }}"
+        <a href="{% url 'article:article_list' %}?tag={{ tag }} "
            class="badge badge-secondary" 
         >
             {{ tag }}

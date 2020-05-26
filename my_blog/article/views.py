@@ -91,7 +91,7 @@ def article_update(request, id):
                 article.column = ArticleColumn.objects.get(id=request.POST['column'])
             else:
                 article.column = None
-            article.tags.set(*request.POST.get('tags').split(','), clear=True)
+            article.tags.add(*request.POST.get('tags').split(','))
             article.save()
             return redirect("article:article_detail", id=id)
         else:

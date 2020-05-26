@@ -25,8 +25,9 @@ def post_comment(request, article_id):
 @login_required(login_url='/userprofile/login/')
 def delete_comment(request,id): 
     comment =Comment.objects.get(id=id)
+    article=ArticlePost.objects.get(id=comment.article.id)
     if request.user==comment.user:
         comment.delete() 
-        return HttpResponse("删除已完成")
+        return redirect(article)
     else:
         return HttpResponse("非授权行为")

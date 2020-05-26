@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from article.views import article_list
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
     path('', article_list, name='home'),
     path('article/', include('article.urls', namespace='article')),
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
